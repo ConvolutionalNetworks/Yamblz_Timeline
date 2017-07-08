@@ -3,6 +3,8 @@ package com.mobilization.yamblz_timeline.presentation.activity;
 import com.mobilization.yamblz_timeline.domain.Event;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.widget.DividerItemDecoration;
+import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.widget.TextView;
 
@@ -20,6 +22,7 @@ import java.util.List;
 import javax.inject.Inject;
 
 import butterknife.BindView;
+import butterknife.ButterKnife;
 import butterknife.Unbinder;
 
 public class MainActivity extends AppCompatActivity implements ScheduleView {
@@ -43,8 +46,21 @@ public class MainActivity extends AppCompatActivity implements ScheduleView {
 
         mSchedulePresenter.getSchedule();
         mSchedule = new ArrayList<>();
+        unbinder = ButterKnife.bind(this);
         mEventAdapter = new EventAdapter(mSchedule, this);
+        LinearLayoutManager linearLayoutManager = new LinearLayoutManager(this);
+        mEventsSchedule.setLayoutManager(linearLayoutManager);
+        DividerItemDecoration dividerItemDecoration = new DividerItemDecoration(mEventsSchedule.getContext(),
+                linearLayoutManager.getOrientation());
+        mEventsSchedule.addItemDecoration(dividerItemDecoration);
         mEventsSchedule.setAdapter(mEventAdapter);
+
+    }
+
+    @Override
+    protected void onDestroy() {
+        unbinder.unbind();
+        super.onDestroy();
     }
 
     @Override
