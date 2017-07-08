@@ -8,8 +8,6 @@ import com.mobilization.yamblz_timeline.domain.School;
 
 import java.util.List;
 
-import javax.inject.Inject;
-
 import io.reactivex.Flowable;
 
 /**

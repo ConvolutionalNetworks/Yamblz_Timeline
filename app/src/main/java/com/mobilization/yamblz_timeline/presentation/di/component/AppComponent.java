@@ -13,7 +13,5 @@ import dagger.Component;
 @Component(modules = {AppModule.class, UtilsModule.class})
 public interface AppComponent {
 
-    void inject(MainActivity mainActivity);
-
     EventComponent plus(EventModule eventModule);
 }

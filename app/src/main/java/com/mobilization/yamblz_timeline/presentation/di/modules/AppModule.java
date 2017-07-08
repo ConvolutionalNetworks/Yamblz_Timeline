@@ -19,7 +19,7 @@ public class AppModule {
 
     @Provides
     @Singleton
-    public Context getContext() {
+    public Context provideContext() {
         return context;
     }
 }
