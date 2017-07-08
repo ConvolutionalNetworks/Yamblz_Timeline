@@ -24,13 +24,13 @@ public class EventAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> 
 
     private final List<Event> mValues;
     private Context context;
-    private View.OnClickListener listener;
+    private OnEventClickListener listener;
 
 
 
 
 
-    public EventAdapter(List<Event> items, Context context, View.OnClickListener listener) {
+    public EventAdapter(List<Event> items, Context context, OnEventClickListener listener) {
         mValues = items;
         this.context = context;
         this.listener = listener;
@@ -50,7 +50,7 @@ public class EventAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> 
     public void onBindViewHolder(final RecyclerView.ViewHolder holder, int position) {
 
 
-        MyViewHolder myViewHolder = (MyViewHolder) holder;
+        final MyViewHolder myViewHolder = (MyViewHolder) holder;
         myViewHolder.mItem = mValues.get(position);
 
         myViewHolder.title.setText(myViewHolder.mItem.getTitle());
@@ -65,7 +65,12 @@ public class EventAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> 
 
         myViewHolder.teachers.setText(sb.toString());
 
-        myViewHolder.mView.setOnClickListener(listener);
+        myViewHolder.mView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                listener.onEventClick(myViewHolder.mItem);
+            }
+        });
 
 
 
@@ -114,6 +119,10 @@ public class EventAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> 
         }
 
         
+    }
+
+    public interface OnEventClickListener {
+        void onEventClick(Event event);
     }
 
 
