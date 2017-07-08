@@ -1,18 +1,10 @@
-package com.mobilization.yamblz_timeline.presentation.mvp;
+package com.mobilization.yamblz_timeline.presentation.mvp.presenter;
 
-import com.mobilization.yamblz_timeline.domain.Event;
-import com.mobilization.yamblz_timeline.domain.School;
+import com.mobilization.yamblz_timeline.presentation.mvp.common.BasePresenter;
+import com.mobilization.yamblz_timeline.presentation.mvp.view.ScheduleView;
 
-import java.util.List;
+public interface SchedulePresenter extends BasePresenter<ScheduleView> {
 
-import io.reactivex.Flowable;
-
-/**
- * Created by Kim Michael on 08.07.17
- */
-public interface SchedulePresenter {
-
-    void setSchool(School school);
     void getSchedule();
 
 }

@@ -3,24 +3,22 @@ package com.mobilization.yamblz_timeline.domain;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.inject.Inject;
+
 import io.reactivex.Observable;
 import io.reactivex.ObservableSource;
 import io.reactivex.Scheduler;
 import io.reactivex.annotations.NonNull;
 import io.reactivex.functions.Function;
 
-/**
- * Created by Mishkun on 08.07.2017.
- */
-
-public class GetEventsInteractor extends Interactor<List<Event>, Void> {
+public class EventsInteractor extends Interactor<List<Event>, Void> {
 
     private final ScheduleProvider scheduleProvider;
     private final MapsProvider mapsProvider;
     private final SchoolProvider schoolProvider;
 
-
-    GetEventsInteractor(Scheduler threadExecutor, Scheduler postExecutionThread, ScheduleProvider scheduleProvider, MapsProvider mapsProvider,
+    @Inject
+    EventsInteractor(Scheduler threadExecutor, Scheduler postExecutionThread, ScheduleProvider scheduleProvider, MapsProvider mapsProvider,
                         SchoolProvider schoolProvider) {
         super(threadExecutor, postExecutionThread);
         this.scheduleProvider = scheduleProvider;
@@ -63,7 +61,7 @@ public class GetEventsInteractor extends Interactor<List<Event>, Void> {
                 });
     }
 
-    @android.support.annotation.NonNull
+    @NonNull
     private Event appendLocationLinkToEvent(@NonNull LocationLink locationLink, @NonNull Event event) {
         return new Event(event.getLocation(), locationLink, event.getTitle(), event.getTimestamp(), event.getSchools(), event.getTeachers());
     }

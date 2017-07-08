@@ -9,7 +9,6 @@ import com.mobilization.yamblz_timeline.R;
 import com.mobilization.yamblz_timeline.presentation.di.App;
 import com.mobilization.yamblz_timeline.presentation.di.modules.EventModule;
 import com.mobilization.yamblz_timeline.presentation.di.modules.ScreenModule;
-import com.mobilization.yamblz_timeline.presentation.mvp.SchedulePresenter;
 import com.mobilization.yamblz_timeline.presentation.mvp.presenter.SchedulePresenter;
 import com.mobilization.yamblz_timeline.presentation.mvp.view.ScheduleView;
 
