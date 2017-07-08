@@ -1,21 +1,23 @@
 package com.mobilization.yamblz_timeline.domain;
 
+import java.util.List;
+
 /**
  * Created by Алексей on 08.07.2017.
  */
 
-class Teacher {
+public class Teacher {
 
     private String name;
     private String photoPath;
-    private School school;
+    private List<School> schools;
     private String telegram;
 
 
-    public Teacher(String name, String photoPath, School school, String telegram) {
+    public Teacher(String name, String photoPath, List<School> schools, String telegram) {
         this.name = name;
         this.photoPath = photoPath;
-        this.school = school;
+        this.schools = schools;
         this.telegram = telegram;
     }
 
@@ -27,8 +29,8 @@ class Teacher {
         return photoPath;
     }
 
-    public School getSchool() {
-        return school;
+    public List<School> getSchool() {
+        return schools;
     }
 
     public String getTelegram() {
