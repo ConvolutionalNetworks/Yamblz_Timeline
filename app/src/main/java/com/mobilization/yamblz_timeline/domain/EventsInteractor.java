@@ -1,9 +1,14 @@
 package com.mobilization.yamblz_timeline.domain;
 
+import com.mobilization.yamblz_timeline.presentation.di.App;
+import com.mobilization.yamblz_timeline.presentation.di.modules.EventModule;
+import com.mobilization.yamblz_timeline.presentation.di.scopes.EventScope;
+
 import java.util.ArrayList;
 import java.util.List;
 
 import javax.inject.Inject;
+import javax.inject.Named;
 
 import io.reactivex.Observable;
 import io.reactivex.ObservableSource;
@@ -11,6 +16,10 @@ import io.reactivex.Scheduler;
 import io.reactivex.annotations.NonNull;
 import io.reactivex.functions.Function;
 
+import static com.mobilization.yamblz_timeline.presentation.di.modules.UtilsModule.JOB;
+import static com.mobilization.yamblz_timeline.presentation.di.modules.UtilsModule.UI;
+
+@EventScope
 public class EventsInteractor extends Interactor<List<Event>, Void> {
 
     private final ScheduleProvider scheduleProvider;
@@ -18,12 +27,13 @@ public class EventsInteractor extends Interactor<List<Event>, Void> {
     private final SchoolProvider schoolProvider;
 
     @Inject
-    EventsInteractor(Scheduler threadExecutor, Scheduler postExecutionThread, ScheduleProvider scheduleProvider, MapsProvider mapsProvider,
-                        SchoolProvider schoolProvider) {
+    EventsInteractor(@Named(JOB) Scheduler threadExecutor, @Named(UI) Scheduler postExecutionThread, ScheduleProvider scheduleProvider, MapsProvider mapsProvider,
+                     SchoolProvider schoolProvider) {
         super(threadExecutor, postExecutionThread);
         this.scheduleProvider = scheduleProvider;
         this.mapsProvider = mapsProvider;
         this.schoolProvider = schoolProvider;
+        App.getInstance().getAppComponent().plus(new EventModule()).inject(this);
     }
 
     @Override

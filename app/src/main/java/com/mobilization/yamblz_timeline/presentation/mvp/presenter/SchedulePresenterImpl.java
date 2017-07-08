@@ -21,12 +21,11 @@ public class SchedulePresenterImpl implements SchedulePresenter {
 
     ScheduleView mScheduleView;
 
-    @Inject
     EventsInteractor interactor;
 
-    @Inject
-    public SchedulePresenterImpl() {
+    public SchedulePresenterImpl(EventsInteractor eventsInteractor) {
         App.getInstance().getAppComponent().plus(new EventModule()).plus(new ScreenModule()).inject(this);
+        interactor = eventsInteractor;
     }
 
     @Override
@@ -34,7 +33,7 @@ public class SchedulePresenterImpl implements SchedulePresenter {
         interactor.execute(new DisposableObserver<List<Event>>() {
             @Override
             public void onNext(List<Event> events) {
-
+                mScheduleView.showSchedule(events);
             }
 
             @Override
@@ -56,7 +55,7 @@ public class SchedulePresenterImpl implements SchedulePresenter {
 
     @Override
     public void bindView(ScheduleView scheduleView) {
-
+        this.mScheduleView = scheduleView;
     }
 
     static class ScheduleObserver implements Consumer<List<Event>> {

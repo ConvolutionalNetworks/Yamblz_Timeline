@@ -37,11 +37,20 @@ public class MainActivity extends AppCompatActivity implements ScheduleView {
         App.getInstance().getAppComponent().plus(new EventModule()).plus(new ScreenModule()).inject(this);
         setContentView(R.layout.activity_main);
 
+        mSchedulePresenter.getSchedule();
         mSchedule = new ArrayList<>();
     }
 
     @Override
-    public void showSchedule(List<Event> events) {
+    protected void onResume() {
+        super.onResume();
+        mSchedulePresenter.bindView(this);
+    }
 
+    @Override
+    public void showSchedule(List<Event> events) {
+        for (Event event : events) {
+            System.out.println(event.getTitle());
+        }
     }
 }
