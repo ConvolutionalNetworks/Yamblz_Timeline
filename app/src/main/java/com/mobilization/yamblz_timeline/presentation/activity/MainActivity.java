@@ -40,7 +40,8 @@ public class MainActivity extends AppCompatActivity implements ScheduleView {
 
         mSchedulePresenter.getSchedule();
         mSchedule = new ArrayList<>();
-        mEventsSchedule.setAdapter();
+
+//        mEventsSchedule.setAdapter();
     }
 
     @Override

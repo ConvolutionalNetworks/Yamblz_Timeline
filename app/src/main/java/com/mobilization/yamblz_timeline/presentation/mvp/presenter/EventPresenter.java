@@ -2,11 +2,10 @@ package com.mobilization.yamblz_timeline.presentation.mvp.presenter;
 
 import com.mobilization.yamblz_timeline.domain.Event;
 import com.mobilization.yamblz_timeline.presentation.mvp.common.BasePresenter;
-import com.mobilization.yamblz_timeline.presentation.mvp.view.ScheduleView;
+import com.mobilization.yamblz_timeline.presentation.mvp.view.EventView;
 
-public interface SchedulePresenter extends BasePresenter<ScheduleView> {
+public interface EventPresenter extends BasePresenter<EventView> {
 
-    void getSchedule();
+    Event getEvent();
 
-    void clickEvent(Event event);
 }

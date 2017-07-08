@@ -1,5 +1,6 @@
 package com.mobilization.yamblz_timeline.presentation.mvp.presenter;
 
+import com.mobilization.yamblz_timeline.domain.CurrentEventProvider;
 import com.mobilization.yamblz_timeline.domain.Event;
 import com.mobilization.yamblz_timeline.domain.EventsInteractor;
 import com.mobilization.yamblz_timeline.presentation.di.App;
@@ -14,14 +15,14 @@ import javax.inject.Inject;
 import io.reactivex.functions.Consumer;
 import io.reactivex.observers.DisposableObserver;
 
-/**
- * Created by Kim Michael on 08.07.17
- */
 public class SchedulePresenterImpl implements SchedulePresenter {
 
-    ScheduleView mScheduleView;
+    private ScheduleView mScheduleView;
 
-    EventsInteractor interactor;
+    private EventsInteractor interactor;
+
+    @Inject
+    CurrentEventProvider currentEventProvider;
 
     public SchedulePresenterImpl(EventsInteractor eventsInteractor) {
         App.getInstance().getAppComponent().plus(new EventModule()).plus(new ScreenModule()).inject(this);
@@ -49,6 +50,11 @@ public class SchedulePresenterImpl implements SchedulePresenter {
     }
 
     @Override
+    public void clickEvent(Event event) {
+        currentEventProvider.saveEvent(event);
+    }
+
+    @Override
     public void setModel() {
 
     }
@@ -59,8 +65,6 @@ public class SchedulePresenterImpl implements SchedulePresenter {
     }
 
     static class ScheduleObserver implements Consumer<List<Event>> {
-
-
 
         @Override
         public void accept(List<Event> events) throws Exception {
