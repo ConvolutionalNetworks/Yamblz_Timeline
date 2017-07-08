@@ -11,7 +11,10 @@ import com.mobilization.yamblz_timeline.R;
 import com.mobilization.yamblz_timeline.domain.Event;
 import com.mobilization.yamblz_timeline.domain.Teacher;
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
+import java.util.Locale;
 
 /**
  * Created by Алексей on 08.07.2017.
@@ -54,6 +57,10 @@ public class EventAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> 
             sb.append(teacher.getName());
             sb.append("\n");
         }
+        long time = myViewHolder.mItem.getTimestamp();
+        SimpleDateFormat sdf = new SimpleDateFormat("dd.MM.yyyy EEEE");
+        myViewHolder.day.setText(sdf.format(new Date(time)));
+
         myViewHolder.teachers.setText(sb.toString());
 
 
@@ -92,7 +99,6 @@ public class EventAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> 
         public MyViewHolder(View view) {
             super(view);
             mView = view;
-
 
             day = (TextView) view.findViewById(R.id.day);
             title = (TextView) view.findViewById(R.id.title);
