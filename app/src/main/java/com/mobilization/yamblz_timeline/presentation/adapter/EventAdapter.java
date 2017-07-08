@@ -83,7 +83,6 @@ public class EventAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> 
         public final View mView;
 
         public final TextView day;
-        public final TextView day_of_week;
         public final TextView title;
         public final TextView teachers;
 
@@ -96,7 +95,6 @@ public class EventAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> 
 
 
             day = (TextView) view.findViewById(R.id.day);
-            day_of_week = (TextView) view.findViewById(R.id.day_of_week);
             title = (TextView) view.findViewById(R.id.title);
             teachers = (TextView) view.findViewById(R.id.teachers);
 

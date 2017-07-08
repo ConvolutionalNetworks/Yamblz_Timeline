@@ -29,7 +29,6 @@ public class MainActivity extends AppCompatActivity implements ScheduleView {
 
     List<Event> mSchedule;
     @BindView(R.id.current_day) TextView mCurrentDay;
-    @BindView(R.id.homework_deadline) TextView mHomeworkDeadline;
     @BindView(R.id.events_schedule) RecyclerView mEventsSchedule;
     Unbinder unbinder;
 
@@ -54,7 +53,6 @@ public class MainActivity extends AppCompatActivity implements ScheduleView {
                 linearLayoutManager.getOrientation());
         mEventsSchedule.addItemDecoration(dividerItemDecoration);
         mEventsSchedule.setAdapter(mEventAdapter);
-
     }
 
     @Override
