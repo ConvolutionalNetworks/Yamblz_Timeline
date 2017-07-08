@@ -24,14 +24,16 @@ public class EventAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> 
 
     private final List<Event> mValues;
     private Context context;
+    private View.OnClickListener listener;
 
 
 
 
 
-    public EventAdapter(List<Event> items, Context context) {
+    public EventAdapter(List<Event> items, Context context, View.OnClickListener listener) {
         mValues = items;
         this.context = context;
+        this.listener = listener;
 
     }
 
@@ -62,6 +64,8 @@ public class EventAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> 
         myViewHolder.day.setText(sdf.format(new Date(time)));
 
         myViewHolder.teachers.setText(sb.toString());
+
+        myViewHolder.mView.setOnClickListener(listener);
 
 
 
