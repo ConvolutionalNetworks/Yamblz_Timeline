@@ -124,7 +124,21 @@ public class ScheduleFromJson implements ScheduleProvider {
 
     @Override
     public int getCurrentDay() {
-        return 0;
+        long currentTime = System.currentTimeMillis();
+        String startDate = "03.07.2017";
+        SimpleDateFormat sdf = new SimpleDateFormat("dd.MM.yyyy", Locale.ENGLISH);
+        long startTime = 0;
+        try {
+            startTime = sdf.parse(startDate).getTime();
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
+
+        long diff = currentTime - startTime;
+
+        long day = diff / (1000 * 60 * 60 * 24);
+
+        return (int) day;
     }
 
     private People findPeopleByName(List<People> peoples, String name) {
