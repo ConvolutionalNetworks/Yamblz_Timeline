@@ -72,7 +72,7 @@ public class ScheduleFromJson implements ScheduleProvider {
         for (int i =0; i < schedules.size(); i++) {
             Schedule schedule = schedules.get(i);
             //2017-07-03 10:00:00+0300
-           SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ssZZZZZ", Locale.ENGLISH);
+           SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ssZZZZZ", Locale.ENGLISH);
 
             long timestamp = 0;
 
