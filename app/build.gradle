@@ -1,5 +1,5 @@
+//noinspection GradleCompatible
 apply plugin: 'com.android.application'
-apply plugin: 'com.neenbedankt.android-apt'
 
 android {
     compileSdkVersion 26
@@ -25,13 +25,13 @@ dependencies {
     androidTestCompile('com.android.support.test.espresso:espresso-core:2.2.2', {
         exclude group: 'com.android.support', module: 'support-annotations'
     })
-    compile "com.android.support:appcompat-v7:$rootProject.support_version"
-    compile "com.android.support:recyclerview-v7:$rootProject.support_version"
+    compile "com.android.support:appcompat-v7:26.0.0-alpha1"
+    compile "com.android.support:recyclerview-v7:26.0.0-alpha1"
 
     compile "com.android.support.constraint:constraint-layout:$rootProject.constraint_layout_version"
 
     compile "com.google.dagger:dagger:$rootProject.dagger_version"
-    apt "com.google.dagger:dagger-compiler:$rootProject.dagger_version"
+    annotationProcessor "com.google.dagger:dagger-compiler:$rootProject.dagger_version"
 
     compile "com.jakewharton:butterknife:$rootProject.butter_knife_version"
     annotationProcessor "com.jakewharton:butterknife-compiler:$rootProject.butter_knife_version"
