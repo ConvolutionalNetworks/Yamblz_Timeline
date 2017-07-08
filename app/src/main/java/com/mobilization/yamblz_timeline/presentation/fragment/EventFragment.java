@@ -1,6 +1,9 @@
 package com.mobilization.yamblz_timeline.presentation.fragment;
 
 
+import android.content.res.AssetManager;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
@@ -20,6 +23,8 @@ import com.mobilization.yamblz_timeline.presentation.di.modules.ScreenModule;
 import com.mobilization.yamblz_timeline.presentation.mvp.presenter.EventPresenter;
 import com.squareup.picasso.Picasso;
 
+import java.io.IOException;
+import java.io.InputStream;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
@@ -102,7 +107,16 @@ public class EventFragment extends Fragment {
         nameTextView.setText(teacher.getName());
         telegramTextView.setText(teacher.getTelegram());
 
+        try{
+            AssetManager mngr = getActivity().getAssets();
+            InputStream BulletImgInput = mngr.open(teacher.getPhotoPath());
+            //InputStream BulletImgInput = mngr.open("image/Malay/bullet.png");
 
+            Bitmap bitmapBullet = BitmapFactory.decodeStream(BulletImgInput);
+            teacherImageView.setImageBitmap(bitmapBullet);
+        }catch(final IOException e){
+            e.printStackTrace();
+        }
 
         teacherLinearLayout.addView(teacherView);
 
