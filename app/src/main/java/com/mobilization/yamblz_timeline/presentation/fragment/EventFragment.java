@@ -12,11 +12,16 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.mobilization.yamblz_timeline.R;
+import com.mobilization.yamblz_timeline.domain.Event;
 import com.mobilization.yamblz_timeline.domain.Teacher;
 import com.mobilization.yamblz_timeline.presentation.di.App;
 import com.mobilization.yamblz_timeline.presentation.di.modules.EventModule;
 import com.mobilization.yamblz_timeline.presentation.di.modules.ScreenModule;
 import com.mobilization.yamblz_timeline.presentation.mvp.presenter.EventPresenter;
+import com.squareup.picasso.Picasso;
+
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 import javax.inject.Inject;
 
@@ -36,6 +41,8 @@ public class EventFragment extends Fragment {
     TextView timeTextView;
     @BindView(R.id.teacher_linear_layout)
     LinearLayout teacherLinearLayout;
+
+    private Event event;
 
     @Inject
     EventPresenter presenter;
@@ -64,6 +71,21 @@ public class EventFragment extends Fragment {
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         ButterKnife.bind(this, view);
+
+        presenter.setModel();
+
+        event = presenter.getEvent();
+
+        nameTextView.setText(event.getTitle());
+        SimpleDateFormat sdf = new SimpleDateFormat("dd MMMM EEEE");
+        timeTextView.setText(sdf.format(new Date(event.getTimestamp())));
+
+        Picasso.with(getActivity()).load(event.getLocationLink().getLink()).into(mapImageView);
+
+        for (Teacher teacher : event.getTeachers()) {
+            addTeacherToLinearLayout(teacher);
+        }
+
     }
 
     private void addTeacherToLinearLayout(Teacher teacher) {
@@ -74,6 +96,8 @@ public class EventFragment extends Fragment {
 
         nameTextView.setText(teacher.getName());
         telegramTextView.setText(teacher.getTelegram());
+
+
 
         teacherLinearLayout.addView(teacherView);
 
