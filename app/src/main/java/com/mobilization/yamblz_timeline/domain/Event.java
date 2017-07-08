@@ -8,7 +8,6 @@ import java.util.List;
 
 public class Event {
 
-
     private String location;
     private LocationLink locationLink;
     private String title;
