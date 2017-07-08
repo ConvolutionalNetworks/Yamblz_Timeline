@@ -60,7 +60,7 @@ public class EventAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> 
             sb.append("\n");
         }
         long time = myViewHolder.mItem.getTimestamp();
-        SimpleDateFormat sdf = new SimpleDateFormat("dd.MM.yyyy EEEE");
+        SimpleDateFormat sdf = new SimpleDateFormat("dd MMMM\n EEEE");
         myViewHolder.day.setText(sdf.format(new Date(time)));
 
         myViewHolder.teachers.setText(sb.toString());

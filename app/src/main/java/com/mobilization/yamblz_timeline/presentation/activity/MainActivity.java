@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.support.v7.widget.DividerItemDecoration;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.view.View;
 import android.widget.TextView;
 
 import com.mobilization.yamblz_timeline.R;
@@ -46,7 +47,11 @@ public class MainActivity extends AppCompatActivity implements ScheduleView {
         mSchedulePresenter.getSchedule();
         mSchedule = new ArrayList<>();
         unbinder = ButterKnife.bind(this);
-        mEventAdapter = new EventAdapter(mSchedule, this);
+        mEventAdapter = new EventAdapter(mSchedule, this, new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+            }
+        });
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(this);
         mEventsSchedule.setLayoutManager(linearLayoutManager);
         DividerItemDecoration dividerItemDecoration = new DividerItemDecoration(mEventsSchedule.getContext(),
