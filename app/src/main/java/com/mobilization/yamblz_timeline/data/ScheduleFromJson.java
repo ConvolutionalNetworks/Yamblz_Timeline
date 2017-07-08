@@ -115,7 +115,7 @@ public class ScheduleFromJson implements ScheduleProvider {
             }
 
 
-            Event event = new Event(schedule.getLocation(), schedule.getTitle(), timestamp, schools, teachers);
+            Event event = new Event(schedule.getLocation(), null,  schedule.getTitle(), timestamp, schools, teachers);
             events.add(event);
         }
 
@@ -140,16 +140,18 @@ public class ScheduleFromJson implements ScheduleProvider {
         switch (s) {
             case "shri":
                 return School.FRONTEND;
-                break;
+
             case "shm":
                 return School.MANAGEMENT;
-                break;
+
             case "shmd":
                 return School.DESIGN;
-                break;
+
             case "shnr":
                 return School.MOBILE;
-                break;
+                
+            default:
+                return School.MOBILE;
         }
     }
 
