@@ -33,5 +33,9 @@ dependencies {
     compile "com.google.dagger:dagger:$rootProject.dagger_version"
     apt "com.google.dagger:dagger-compiler:$rootProject.dagger_version"
 
+    compile "com.jakewharton:butterknife:$rootProject.butter_knife_version"
+    annotationProcessor "com.jakewharton:butterknife-compiler:$rootProject.butter_knife_version"
+
     testCompile 'junit:junit:4.12'
+    compile 'com.google.code.gson:gson:2.8.1'
 }

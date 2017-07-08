@@ -6,8 +6,7 @@ import java.util.List;
  * Created by Алексей on 08.07.2017.
  */
 
-class Event {
-
+public class Event {
 
     private String location;
     private String title;
