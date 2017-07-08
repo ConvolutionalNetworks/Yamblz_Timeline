@@ -7,7 +7,10 @@ import com.mobilization.yamblz_timeline.presentation.di.modules.EventModule;
 import com.mobilization.yamblz_timeline.presentation.di.modules.ScreenModule;
 import com.mobilization.yamblz_timeline.presentation.mvp.view.ScheduleView;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.List;
+import java.util.Locale;
 
 import javax.inject.Inject;
 
@@ -46,6 +49,25 @@ public class SchedulePresenterImpl implements SchedulePresenter {
 
             }
         }, null);
+    }
+
+    @Override
+    public int getCurrentDay() {
+        long currentTime = System.currentTimeMillis();
+        String startDate = "03.07.2017";
+        SimpleDateFormat sdf = new SimpleDateFormat("dd.MM.yyyy", Locale.ENGLISH);
+        long startTime = 0;
+        try {
+            startTime = sdf.parse(startDate).getTime();
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
+
+        long diff = currentTime - startTime;
+
+        long day = diff / (1000 * 60 * 60 * 24);
+
+        return (int) day;
     }
 
     @Override

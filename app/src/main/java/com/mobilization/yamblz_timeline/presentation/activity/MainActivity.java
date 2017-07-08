@@ -53,6 +53,7 @@ public class MainActivity extends AppCompatActivity implements ScheduleView {
                 linearLayoutManager.getOrientation());
         mEventsSchedule.addItemDecoration(dividerItemDecoration);
         mEventsSchedule.setAdapter(mEventAdapter);
+        mCurrentDay.setText("Прошло " + mSchedulePresenter.getCurrentDay() + " дней");
     }
 
     @Override
