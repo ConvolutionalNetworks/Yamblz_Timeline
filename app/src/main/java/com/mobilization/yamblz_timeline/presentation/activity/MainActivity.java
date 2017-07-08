@@ -3,6 +3,7 @@ package com.mobilization.yamblz_timeline.presentation.activity;
 import com.mobilization.yamblz_timeline.domain.Event;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.widget.RecyclerView;
 import android.widget.TextView;
 
 import com.mobilization.yamblz_timeline.R;
@@ -25,7 +26,7 @@ public class MainActivity extends AppCompatActivity implements ScheduleView {
     List<Event> mSchedule;
     @BindView(R.id.current_day) TextView mCurrentDay;
     @BindView(R.id.homework_deadline) TextView mHomeworkDeadline;
-    @BindView(R.id.events_schedule) TextView mEventsSchedule;
+    @BindView(R.id.events_schedule) RecyclerView mEventsSchedule;
     Unbinder unbinder;
 
     @Inject
@@ -39,6 +40,7 @@ public class MainActivity extends AppCompatActivity implements ScheduleView {
 
         mSchedulePresenter.getSchedule();
         mSchedule = new ArrayList<>();
+        mEventsSchedule.setAdapter();
     }
 
     @Override

@@ -9,6 +9,7 @@ import android.widget.TextView;
  * Created by Kim Michael on 08.07.17
  */
 public class ScheduleAdapter extends RecyclerView.Adapter {
+
     @Override
     public RecyclerView.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         return null;

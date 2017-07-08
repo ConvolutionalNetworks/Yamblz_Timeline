@@ -2,7 +2,9 @@ package com.mobilization.yamblz_timeline.presentation.di.modules;
 
 import android.content.Context;
 
+import com.mobilization.yamblz_timeline.data.MapsFromYandexStaticApi;
 import com.mobilization.yamblz_timeline.data.ScheduleFromJson;
+import com.mobilization.yamblz_timeline.data.SchoolProviderImp;
 import com.mobilization.yamblz_timeline.domain.MapsProvider;
 import com.mobilization.yamblz_timeline.domain.ScheduleProvider;
 import com.mobilization.yamblz_timeline.domain.SchoolProvider;
@@ -23,12 +25,12 @@ public class EventModule {
     @Provides
     @EventScope
     public MapsProvider provideMapsProvider() {
-        return null;
+        return new MapsFromYandexStaticApi();
     }
 
     @Provides
     @EventScope
     public SchoolProvider provideSchoolProvider() {
-        return null;
+        return new SchoolProviderImp();
     }
 }
