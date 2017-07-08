@@ -6,7 +6,6 @@ import com.mobilization.yamblz_timeline.presentation.di.modules.ScreenModule;
 import com.mobilization.yamblz_timeline.presentation.di.scopes.EventScreenScope;
 import com.mobilization.yamblz_timeline.presentation.fragment.EventFragment;
 import com.mobilization.yamblz_timeline.presentation.mvp.presenter.SchedulePresenter;
-
 import dagger.Subcomponent;
 
 @EventScreenScope
