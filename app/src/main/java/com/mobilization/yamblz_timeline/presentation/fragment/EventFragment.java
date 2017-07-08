@@ -40,6 +40,11 @@ public class EventFragment extends Fragment {
     @Inject
     EventPresenter presenter;
 
+    public static EventFragment newInstance() {
+        return new EventFragment();
+
+    }
+
 
     public EventFragment() {
         // Required empty public constructor

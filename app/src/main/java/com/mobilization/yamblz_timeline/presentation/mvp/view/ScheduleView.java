@@ -7,4 +7,6 @@ import java.util.List;
 public interface ScheduleView {
 
     void showSchedule(List<Event> events);
+
+    void openFragment();
 }

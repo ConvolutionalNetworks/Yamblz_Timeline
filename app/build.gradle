@@ -34,12 +34,15 @@ dependencies {
     compile "com.jakewharton:butterknife:$rootProject.butter_knife_version"
     annotationProcessor "com.jakewharton:butterknife-compiler:$rootProject.butter_knife_version"
 
-    compile 'com.android.support:appcompat-v7:26.0.0-alpha1'
-    compile 'com.android.support:recyclerview-v7:26.0.0-alpha1'
-    compile 'com.google.code.gson:gson:2.8.1'
-    
+    compile "com.android.support:appcompat-v7:$rootProject.support_version"
+    compile "com.android.support:recyclerview-v7:$rootProject.support_version"
+    compile "com.google.code.gson:gson:$rootProject.gson_version"
+
     compile "io.reactivex.rxjava2:rxjava:2.1.1"
     compile 'io.reactivex.rxjava2:rxandroid:2.0.1'
-    compile 'com.android.support:support-v4:26.0.0-alpha1'
+    compile "com.android.support:support-v4:$rootProject.support_version"
     testCompile 'junit:junit:4.12'
+
+    compile 'com.squareup.picasso:picasso:2.5.2'
+
 }

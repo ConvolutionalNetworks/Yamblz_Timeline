@@ -20,7 +20,7 @@ import io.reactivex.observers.DisposableObserver;
 
 public class SchedulePresenterImpl implements SchedulePresenter {
 
-    private ScheduleView mScheduleView;
+    private ScheduleView view;
 
     private EventsInteractor interactor;
 
@@ -37,7 +37,7 @@ public class SchedulePresenterImpl implements SchedulePresenter {
         interactor.execute(new DisposableObserver<List<Event>>() {
             @Override
             public void onNext(List<Event> events) {
-                mScheduleView.showSchedule(events);
+                view.showSchedule(events);
             }
 
             @Override
@@ -74,6 +74,8 @@ public class SchedulePresenterImpl implements SchedulePresenter {
 
     public void clickEvent(Event event) {
         currentEventProvider.saveEvent(event);
+
+        view.openFragment();
     }
 
     @Override
@@ -83,7 +85,7 @@ public class SchedulePresenterImpl implements SchedulePresenter {
 
     @Override
     public void bindView(ScheduleView scheduleView) {
-        this.mScheduleView = scheduleView;
+        this.view = scheduleView;
     }
 
     static class ScheduleObserver implements Consumer<List<Event>> {
