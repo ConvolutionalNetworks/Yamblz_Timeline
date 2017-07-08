@@ -13,5 +13,5 @@ public interface ScheduleProvider {
 
     Observable<List<Event>> getEvents();
     int getCurrentDay();
-    long getHomeworkTimestamp(School school);
+
 }
