@@ -34,4 +34,5 @@ dependencies {
     apt "com.google.dagger:dagger-compiler:$rootProject.dagger_version"
 
     testCompile 'junit:junit:4.12'
+    compile 'com.google.code.gson:gson:2.8.1'
 }
