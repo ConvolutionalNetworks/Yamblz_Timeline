@@ -1,0 +1,58 @@
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fillViewport="true"
+    tools:context="com.mobilization.yamblz_timeline.presentation.fragment.EventFragment">
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        >
+
+
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="200dp"
+            android:id="@+id/map_image_view"
+
+            />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/name_text_view"
+            android:text="Хакатон"
+            android:textSize="20sp"
+            android:textColor="@android:color/black"
+            android:padding="8dp"
+            android:layout_below="@+id/map_image_view"
+            android:gravity="center"
+            />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/time_text_view"
+            android:text="16.17.99"
+            android:textSize="20sp"
+            android:textColor="@android:color/black"
+            android:padding="8dp"
+            android:layout_below="@+id/name_text_view"
+            android:gravity="center"
+            />
+
+
+        <LinearLayout
+            android:id="@+id/teacher_linear_layout"
+            android:layout_below="@+id/time_text_view"
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+        </LinearLayout>
+
+
+
+    </RelativeLayout>
+
+    </ScrollView>
