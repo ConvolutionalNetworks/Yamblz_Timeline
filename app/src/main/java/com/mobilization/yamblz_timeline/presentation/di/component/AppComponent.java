@@ -1,8 +1,19 @@
 package com.mobilization.yamblz_timeline.presentation.di.component;
 
-/**
- * Created by 9tilo on 7/8/2017.
- */
+import com.mobilization.yamblz_timeline.presentation.activity.MainActivity;
+import com.mobilization.yamblz_timeline.presentation.di.modules.AppModule;
+import com.mobilization.yamblz_timeline.presentation.di.modules.EventModule;
+import com.mobilization.yamblz_timeline.presentation.di.modules.UtilsModule;
 
-public class AppComponent {
+import javax.inject.Singleton;
+
+import dagger.Component;
+
+@Singleton
+@Component(modules = {AppModule.class, UtilsModule.class})
+public interface AppComponent {
+
+    void inject(MainActivity mainActivity);
+
+    EventComponent plus(EventModule eventModule);
 }

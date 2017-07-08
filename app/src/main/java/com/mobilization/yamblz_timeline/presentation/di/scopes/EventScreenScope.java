@@ -7,6 +7,5 @@ import javax.inject.Scope;
 
 @Scope
 @Retention(RetentionPolicy.RUNTIME)
-public @interface EventScope {
-
+public @interface EventScreenScope {
 }
