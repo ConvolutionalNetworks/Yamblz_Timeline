@@ -1,7 +1,9 @@
-package com.mobilization.yamblz_timeline;
+package com.mobilization.yamblz_timeline.presentation.activity;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+
+import com.mobilization.yamblz_timeline.R;
 
 public class MainActivity extends AppCompatActivity {
 
