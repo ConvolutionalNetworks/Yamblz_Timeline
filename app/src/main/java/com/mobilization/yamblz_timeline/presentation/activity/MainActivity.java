@@ -2,7 +2,9 @@ package com.mobilization.yamblz_timeline.presentation.activity;
 
 import com.mobilization.yamblz_timeline.domain.Event;
 
+import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
+import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.DividerItemDecoration;
@@ -16,6 +18,7 @@ import com.mobilization.yamblz_timeline.presentation.adapter.EventAdapter;
 import com.mobilization.yamblz_timeline.presentation.di.App;
 import com.mobilization.yamblz_timeline.presentation.di.modules.EventModule;
 import com.mobilization.yamblz_timeline.presentation.di.modules.ScreenModule;
+import com.mobilization.yamblz_timeline.presentation.fragment.EventFragment;
 import com.mobilization.yamblz_timeline.presentation.mvp.presenter.SchedulePresenter;
 import com.mobilization.yamblz_timeline.presentation.mvp.view.ScheduleView;
 
@@ -83,5 +86,10 @@ public class MainActivity extends AppCompatActivity implements ScheduleView {
     @Override
     public void openFragment() {
         FragmentManager fragmentManager = getSupportFragmentManager();
+        EventFragment fragment = EventFragment.newInstance();
+        fragmentManager.beginTransaction()
+                .add(R.id.container, fragment)
+                .setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN)
+                .commit();
     }
 }
