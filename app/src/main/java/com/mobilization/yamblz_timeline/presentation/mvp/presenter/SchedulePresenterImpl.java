@@ -20,8 +20,13 @@ public class SchedulePresenterImpl implements com.mobilization.yamblz_timeline.p
     School mSchool;
     @Inject
     ScheduleProvider mScheduleProvider;
-    @Inject
     ScheduleView mScheduleView;
+
+    @Inject
+    public SchedulePresenterImpl() {
+    }
+
+
 
     @Override
     public void setSchool(School school) {
@@ -38,13 +43,4 @@ public class SchedulePresenterImpl implements com.mobilization.yamblz_timeline.p
         });
     }
 
-    @Override
-    public void getCurrentDay() {
-        mScheduleView.showCurrentDay(mScheduleProvider.getCurrentDay());
-    }
-
-    @Override
-    public void getTimeToHomework() {
-
-    }
 }

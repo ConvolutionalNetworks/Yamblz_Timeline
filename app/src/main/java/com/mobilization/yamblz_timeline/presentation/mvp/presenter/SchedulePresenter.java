@@ -14,7 +14,5 @@ public interface SchedulePresenter {
 
     void setSchool(School school);
     void getSchedule();
-    void getCurrentDay();
-    void getTimeToHomework();
 
 }

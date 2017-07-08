@@ -40,4 +40,9 @@ public class MainActivity extends AppCompatActivity implements ScheduleView {
 
         mSchedule = new ArrayList<>();
     }
+
+    @Override
+    public void showSchedule(List<Event> events) {
+
+    }
 }
