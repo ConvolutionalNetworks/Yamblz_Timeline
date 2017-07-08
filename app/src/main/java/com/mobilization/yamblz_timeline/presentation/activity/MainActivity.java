@@ -7,6 +7,7 @@ import android.support.v7.widget.RecyclerView;
 import android.widget.TextView;
 
 import com.mobilization.yamblz_timeline.R;
+import com.mobilization.yamblz_timeline.presentation.adapter.EventAdapter;
 import com.mobilization.yamblz_timeline.presentation.di.App;
 import com.mobilization.yamblz_timeline.presentation.di.modules.EventModule;
 import com.mobilization.yamblz_timeline.presentation.di.modules.ScreenModule;
@@ -32,6 +33,8 @@ public class MainActivity extends AppCompatActivity implements ScheduleView {
     @Inject
     SchedulePresenter mSchedulePresenter;
 
+    EventAdapter mEventAdapter;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -40,7 +43,8 @@ public class MainActivity extends AppCompatActivity implements ScheduleView {
 
         mSchedulePresenter.getSchedule();
         mSchedule = new ArrayList<>();
-        mEventsSchedule.setAdapter();
+        mEventAdapter = new EventAdapter(mSchedule, this);
+        mEventsSchedule.setAdapter(mEventAdapter);
     }
 
     @Override
@@ -51,8 +55,6 @@ public class MainActivity extends AppCompatActivity implements ScheduleView {
 
     @Override
     public void showSchedule(List<Event> events) {
-        for (Event event : events) {
-            System.out.println(event.getTitle());
-        }
+        mSchedule.addAll(events);
     }
 }
