@@ -23,13 +23,12 @@ public class SchedulePresenterImpl implements SchedulePresenter {
     private ScheduleView view;
 
     private EventsInteractor interactor;
+    private CurrentEventProvider currentEventProvider;
 
-    @Inject
-    CurrentEventProvider currentEventProvider;
-
-    public SchedulePresenterImpl(EventsInteractor eventsInteractor) {
+    public SchedulePresenterImpl(EventsInteractor eventsInteractor, CurrentEventProvider currentEventProvider) {
         App.getInstance().getAppComponent().plus(new EventModule()).plus(new ScreenModule()).inject(this);
         interactor = eventsInteractor;
+        this.currentEventProvider = currentEventProvider;
     }
 
     @Override

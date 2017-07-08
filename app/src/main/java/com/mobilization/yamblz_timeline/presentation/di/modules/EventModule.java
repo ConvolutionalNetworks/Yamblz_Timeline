@@ -36,9 +36,4 @@ public class EventModule {
         return new SchoolProviderImp();
     }
 
-    @Provides
-    @EventScope
-    public CurrentEventProvider provideCurrentEventProvider() {
-        return new CurrentEventProviderImpl();
-    }
 }

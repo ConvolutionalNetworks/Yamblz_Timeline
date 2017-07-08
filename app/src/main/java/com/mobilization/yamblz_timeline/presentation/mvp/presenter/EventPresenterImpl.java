@@ -13,13 +13,13 @@ public class EventPresenterImpl implements EventPresenter {
 
     private EventView view;
 
-    @Inject
     CurrentEventProvider currentEventProvider;
 
     private Event event;
 
-    public EventPresenterImpl() {
+    public EventPresenterImpl(CurrentEventProvider currentEventProvider) {
         App.getInstance().getAppComponent().plus(new EventModule()).plus(new ScreenModule()).inject(this);
+        this.currentEventProvider = currentEventProvider;
     }
 
     @Override

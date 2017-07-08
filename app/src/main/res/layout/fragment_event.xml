@@ -16,7 +16,8 @@
             android:layout_width="match_parent"
             android:layout_height="200dp"
             android:id="@+id/map_image_view"
-
+            android:src="@drawable/map"
+            android:scaleType="centerCrop"
             />
 
         <TextView

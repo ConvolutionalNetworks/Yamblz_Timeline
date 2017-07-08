@@ -52,10 +52,12 @@ public class MainActivity extends AppCompatActivity implements ScheduleView {
         mSchedulePresenter.getSchedule();
         mSchedule = new ArrayList<>();
         unbinder = ButterKnife.bind(this);
-        mEventAdapter = new EventAdapter(mSchedule, this, new View.OnClickListener() {
+        mEventAdapter = new EventAdapter(mSchedule, this, new EventAdapter.OnClickListener() {
             @Override
-            public void onClick(View view) {
+            public void onClick(Event event) {
+                mSchedulePresenter.clickEvent(event);
             }
+
         });
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(this);
         mEventsSchedule.setLayoutManager(linearLayoutManager);
@@ -63,7 +65,7 @@ public class MainActivity extends AppCompatActivity implements ScheduleView {
                 linearLayoutManager.getOrientation());
         mEventsSchedule.addItemDecoration(dividerItemDecoration);
         mEventsSchedule.setAdapter(mEventAdapter);
-        mCurrentDay.setText("Прошло " + mSchedulePresenter.getCurrentDay() + " дней");
+        mCurrentDay.setText(mSchedulePresenter.getCurrentDay() + " день");
     }
 
     @Override
@@ -90,6 +92,13 @@ public class MainActivity extends AppCompatActivity implements ScheduleView {
         fragmentManager.beginTransaction()
                 .add(R.id.container, fragment)
                 .setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN)
+                .addToBackStack(null)
                 .commit();
+    }
+
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        getSupportFragmentManager().popBackStack();
     }
 }

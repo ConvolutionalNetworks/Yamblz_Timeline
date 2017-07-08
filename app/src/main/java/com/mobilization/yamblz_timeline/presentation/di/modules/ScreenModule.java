@@ -1,5 +1,6 @@
 package com.mobilization.yamblz_timeline.presentation.di.modules;
 
+import com.mobilization.yamblz_timeline.domain.CurrentEventProvider;
 import com.mobilization.yamblz_timeline.domain.EventsInteractor;
 import com.mobilization.yamblz_timeline.presentation.di.scopes.EventScreenScope;
 import com.mobilization.yamblz_timeline.presentation.mvp.presenter.EventPresenter;
@@ -15,13 +16,13 @@ public class ScreenModule {
 
     @Provides
     @EventScreenScope
-    SchedulePresenter provideSchedulePresenter(EventsInteractor eventsInteractor) {
-        return new SchedulePresenterImpl(eventsInteractor);
+    SchedulePresenter provideSchedulePresenter(EventsInteractor eventsInteractor, CurrentEventProvider currentEventProvider) {
+        return new SchedulePresenterImpl(eventsInteractor, currentEventProvider);
     }
 
     @Provides
     @EventScreenScope
-    EventPresenter provideEventPresenter(){
-        return new EventPresenterImpl();
+    EventPresenter provideEventPresenter(CurrentEventProvider currentEventProvider){
+        return new EventPresenterImpl(currentEventProvider);
     }
 }

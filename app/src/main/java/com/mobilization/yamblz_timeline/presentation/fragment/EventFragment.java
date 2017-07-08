@@ -90,7 +90,7 @@ public class EventFragment extends Fragment {
         SimpleDateFormat sdf = new SimpleDateFormat("dd MMMM EEEE");
         timeTextView.setText(sdf.format(new Date(event.getTimestamp())));
 
-        Picasso.with(getActivity()).load(event.getLocationLink().getLink()).into(mapImageView);
+//        Picasso.with(getActivity()).load("https://static-maps.yandex.ru/1.x/?ll=37.588596,55.733816&spn=0.0015,0.0015&l=map&pt=37.588596,55.733816,pm2rdm").into(mapImageView);
 
         for (Teacher teacher : event.getTeachers()) {
             addTeacherToLinearLayout(teacher);
@@ -105,7 +105,7 @@ public class EventFragment extends Fragment {
         TextView telegramTextView = (TextView) teacherView.findViewById(R.id.telegram_image_view);
 
         nameTextView.setText(teacher.getName());
-        telegramTextView.setText(teacher.getTelegram());
+        telegramTextView.setText("@" + teacher.getTelegram());
 
         try{
             AssetManager mngr = getActivity().getAssets();
