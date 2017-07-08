@@ -4,10 +4,10 @@ package com.mobilization.yamblz_timeline.domain;
  * Created by Mishkun on 08.07.2017.
  */
 
-class LocationLink {
+public class LocationLink {
     private String link;
 
-    LocationLink(String link) {
+    public LocationLink(String link) {
         this.link = link;
     }
 
