@@ -8,6 +8,7 @@ import java.util.List;
 
 public class Event {
 
+
     private String location;
     private String title;
     private long timestamp;
