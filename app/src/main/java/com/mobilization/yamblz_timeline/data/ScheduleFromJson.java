@@ -72,7 +72,7 @@ public class ScheduleFromJson implements ScheduleProvider {
         for (int i =0; i < schedules.size(); i++) {
             Schedule schedule = schedules.get(i);
             //2017-07-03 10:00:00+0300
-           SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ssZZZZZ", Locale.ENGLISH);
+           SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ssZZZZZ", Locale.ENGLISH);
 
             long timestamp = 0;
 
@@ -124,7 +124,21 @@ public class ScheduleFromJson implements ScheduleProvider {
 
     @Override
     public int getCurrentDay() {
-        return 0;
+        long currentTime = System.currentTimeMillis();
+        String startDate = "03.07.2017";
+        SimpleDateFormat sdf = new SimpleDateFormat("dd.MM.yyyy", Locale.ENGLISH);
+        long startTime = 0;
+        try {
+            startTime = sdf.parse(startDate).getTime();
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
+
+        long diff = currentTime - startTime;
+
+        long day = diff / (1000 * 60 * 60 * 24);
+
+        return (int) day;
     }
 
     private People findPeopleByName(List<People> peoples, String name) {

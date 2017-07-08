@@ -11,29 +11,37 @@ import io.reactivex.Scheduler;
 import io.reactivex.annotations.NonNull;
 import io.reactivex.functions.Function;
 
-public class EventsInteractor extends Interactor<List<Event>, School> {
+public class EventsInteractor extends Interactor<List<Event>, Void> {
 
     private final ScheduleProvider scheduleProvider;
     private final MapsProvider mapsProvider;
+    private final SchoolProvider schoolProvider;
 
     @Inject
-    EventsInteractor(Scheduler threadExecutor, Scheduler postExecutionThread, ScheduleProvider scheduleProvider, MapsProvider mapsProvider) {
+    EventsInteractor(Scheduler threadExecutor, Scheduler postExecutionThread, ScheduleProvider scheduleProvider, MapsProvider mapsProvider,
+                        SchoolProvider schoolProvider) {
         super(threadExecutor, postExecutionThread);
         this.scheduleProvider = scheduleProvider;
         this.mapsProvider = mapsProvider;
+        this.schoolProvider = schoolProvider;
     }
 
     @Override
-    Observable<List<Event>> buildUseCaseObservable(final School params) {
+    Observable<List<Event>> buildUseCaseObservable(final Void params) {
         return scheduleProvider.getEvents()
-                               .map(new Function<List<Event>, List<Event>>() {
+                               .flatMap(new Function<List<Event>, ObservableSource<List<Event>>>() {
                                    @Override
-                                   public List<Event> apply(@NonNull List<Event> events) throws Exception {
-                                       List<Event> filteredEvents = new ArrayList<Event>(events.size());
-                                       for (Event event : events)
-                                           if (event.getSchools().contains(params))
-                                               filteredEvents.add(event);
-                                       return filteredEvents;
+                                   public ObservableSource<List<Event>> apply(@NonNull final List<Event> events) throws Exception {
+                                       return schoolProvider.getSchool().map(new Function<School, List<Event>>() {
+                                           @Override
+                                           public List<Event> apply(@NonNull School school) throws Exception {
+                                               List<Event> filteredEvents = new ArrayList<Event>(events.size());
+                                               for (Event event : events)
+                                                   if (event.getSchools().contains(school))
+                                                       filteredEvents.add(event);
+                                               return filteredEvents;
+                                           }
+                                       });
                                    }
                                }).flatMap(new Function<List<Event>, ObservableSource<List<Event>>>() {
                     @Override
