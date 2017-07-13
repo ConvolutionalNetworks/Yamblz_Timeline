@@ -6,17 +6,18 @@ import java.util.List;
  * Created by Алексей on 08.07.2017.
  */
 
-class Event {
-
+public class Event {
 
     private String location;
+    private LocationLink locationLink;
     private String title;
     private long timestamp;
     private List<School> schools;
     private List<Teacher> teachers;
 
-    public Event(String location, String title, long timestamp, List<School> schools, List<Teacher> teachers) {
+    public Event(String location, LocationLink locationLink, String title, long timestamp, List<School> schools, List<Teacher> teachers) {
         this.location = location;
+        this.locationLink = locationLink;
         this.title = title;
         this.timestamp = timestamp;
         this.schools = schools;
@@ -41,5 +42,9 @@ class Event {
 
     public List<Teacher> getTeachers() {
         return teachers;
+    }
+
+    public LocationLink getLocationLink() {
+        return locationLink;
     }
 }
